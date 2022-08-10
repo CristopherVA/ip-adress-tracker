@@ -5,7 +5,7 @@ import Search from './Search'
 function Header() {
   return (
     <div
-      className="header"
+      className="header z-50"
     >
 
       <h1 className="text-center text-light text-xl py-5 font-bold">IP Adress Tracker</h1>
