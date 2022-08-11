@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    mapbox_key: 'pk.eyJ1IjoiY3Jpc2NvZGUiLCJhIjoiY2twZnV0MW9rMDBuZjJucGVtdHI1emZjayJ9.rBk6N0QkEaFWhSZYABnoZg'
+    mapbox_key: process.env.MAP_BOX_TOKEN
   }
 }
 
