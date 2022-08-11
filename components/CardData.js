@@ -1,11 +1,12 @@
 import React from 'react'
 
-function CardData() {
+function CardData(data) {
+
    return (
       <div className='bg-light w-full h-64 py-4 rounded-xl relative -bottom-5 px-4 flex flex-col justify-between'>
          <div>
             <p className='font-bold text-xs text-dark-gray text-center'>IP ADDRESS</p>
-            <p className='text-center font-semibold  text-very-dark-gray text-xl '>465.45.54.88</p>
+            <p className='text-center font-semibold  text-very-dark-gray text-xl '>{data.ip}</p>
          </div>
 
          <div>

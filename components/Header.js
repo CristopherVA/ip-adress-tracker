@@ -2,7 +2,7 @@ import React from 'react'
 import CardData from './CardData'
 import Search from './Search'
 
-function Header() {
+function Header({ tracker, handleInputChange, data }) {
   return (
     <div
       className="header z-50"
@@ -11,8 +11,13 @@ function Header() {
       <h1 className="text-center text-light text-xl py-5 font-bold">IP Adress Tracker</h1>
 
       <div className='px-5'>
-        <Search />
-        <CardData />
+        <Search
+          tracker={tracker}
+          handleInputChange={handleInputChange}
+        />
+        <CardData
+          data={data}
+        />
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Search() {
+function Search({ tracker, handleInputChange }) {
   return (
     <div
       className='w-full h-12 rounded-lg  '
@@ -9,8 +9,9 @@ function Search() {
       <input
         className='w-full h-full rounded-xl outline-none border-none px-4 '
         type="text"
-        name="search"
+        name={tracker}
         placeholder='Search for any IP address or domain'
+        onChange={handleInputChange}
       />
     </div>
   )
