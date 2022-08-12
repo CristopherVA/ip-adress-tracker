@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import ReactMapboxGl, { Layer, Feature, ScaleControl } from 'react-mapbox-gl';
@@ -19,9 +20,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 //       >
 //         <Layer   type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
 //           <Feature   coordinates={[18.735693, -70.162651]} />
-          
+
 //         </Layer>
-        
+
 //       </MapContainer>
 //     </div >
 
@@ -35,23 +36,32 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 mapboxgl.accessToken = process.env.mapbox_key
 
 function Map() {
-  
+
+
 
   useEffect(() => {
-    const map = new  mapboxgl.Map({
+    const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/satellite-streets-v11',
-      zoom: 1.5,
-      center: [30, 50],
+      zoom: 1,
+      center: [35, 50],
       projection: 'globe'
     });
-    
+
     map.on('load', () => {
       // Set the default atmosphere style
       map.setFog({});
     });
+
+    // if (data.location.lat && data.location.lng) {
+    //   map.fitBounds([
+    //     data.location.lat, data.location.lng
+    //   ], {
+    //     padding: 100
+    //   })
+    // }
+
   }, [])
-  
 
 
   return (
