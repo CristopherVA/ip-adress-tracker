@@ -23,6 +23,12 @@ export default function Home() {
 
 const handleSubmit = (e) => {
   e.preventDefault();
+  push({
+    pathname: '/',
+    query: {
+      tracker
+    }
+  })
 
 }
 
