@@ -13,7 +13,6 @@ function Header({ tracker, handleInputChange, data, handleSubmit }) {
       <div className='px-5'>
         <Search
           tracker={tracker}
-          handleSubmit={handleSubmit}
           handleInputChange={handleInputChange}
         />
         <CardData
