@@ -2,7 +2,7 @@ import React from 'react'
 import CardData from './CardData'
 import Search from './Search'
 
-function Header({ tracker, handleInputChange, data }) {
+function Header({ tracker, handleInputChange, data, handleSubmit }) {
   return (
     <div
       className="header z-50"
@@ -13,6 +13,7 @@ function Header({ tracker, handleInputChange, data }) {
       <div className='px-5'>
         <Search
           tracker={tracker}
+          handleSubmit={handleSubmit}
           handleInputChange={handleInputChange}
         />
         <CardData

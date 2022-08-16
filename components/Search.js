@@ -1,8 +1,9 @@
 import React from 'react'
 
-function Search({ tracker, handleInputChange }) {
+function Search({ tracker, handleInputChange, handleSubmit }) {
   return (
-    <div
+    <form
+      onSubmit={handleSubmit}
       className='w-full h-12 rounded-lg  '
     >
 
@@ -13,7 +14,7 @@ function Search({ tracker, handleInputChange }) {
         placeholder='Search for any IP address or domain'
         onChange={handleInputChange}
       />
-    </div>
+    </form>
   )
 }
 

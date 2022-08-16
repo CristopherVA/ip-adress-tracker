@@ -3,11 +3,14 @@ import Header from "../components/Header";
 import Layout from "../components/layout/Layout";
 import Map from '../components/Map'
 import useFetch from "../hooks/useFetch";
+import { useRouter } from "next/router";
 export default function Home() {
 
   const [inputValue, setInputValue] = useState({
     tracker: '8.8.8.8'
   })
+
+  const { push } = useRouter()
 
   const { tracker } = inputValue;
 
@@ -18,6 +21,10 @@ export default function Home() {
     })
   }
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+}
 
   const data = useFetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_GEOLOCATION}&ipAddress=${tracker}`)
     
@@ -34,7 +41,7 @@ export default function Home() {
           tracker={tracker}
           handleInputChange={handleInputChange}
           data={data}
-
+          handleSubmit={handleSubmit}
 
         />
         <Map data={data} />
