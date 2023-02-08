@@ -12,8 +12,7 @@ function Map({ pickupCoordinates }) {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: "map",
-      style:
-        "mapbox://styles/mapbox/satellite-streets-v12" /* "mapbox://styles/mapbox/satellite-streets-v11" */,
+      style: "mapbox://styles/mapbox/satellite-streets-v11",
       center: [11.015, -85.544],
       zoom: 1,
       projection: "globe",
@@ -24,7 +23,7 @@ function Map({ pickupCoordinates }) {
       map.setFog({});
     });
 
-    rotationGlobe(map)
+    rotationGlobe(map);
 
     if (pickupCoordinates) {
       addToMap(map, pickupCoordinates);
