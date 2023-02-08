@@ -45,7 +45,7 @@ function CardData({ data }) {
       ) : (
         <div className="absolute bg-light py-24 rounded-xl w-[100%] h-[100%] grid col-span-1 content-center justify-center ">
           <span className="font-extrabold text-sm md:text-lg  lg:text-4xl">
-            Data not found, please 'Enter IP'
+            Please Enter your IP Address
           </span>
         </div>
       )}
