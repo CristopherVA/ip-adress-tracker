@@ -3,12 +3,10 @@ import Header from "../components/Header";
 import Layout from "../components/layout/Layout";
 import Map from "../components/Map";
 
-
 export default function Home({ data }) {
   const [inputValue, setInputValue] = useState({
     tracker: "",
   });
-
 
   const { tracker } = inputValue;
   const handleInputChange = ({ target }) => {
@@ -52,7 +50,9 @@ export default function Home({ data }) {
 // - Only if you need to pre-render a page whose data must be fetched at request time
 export const getServerSideProps = async (ctx) => {
   const data = await fetch(
-    `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_GEOLOCATION}&ipAddress=${ctx.query.tracker || '0.0.0.0'}`
+    `https://geo.ipify.org/api/v2/country,city?apiKey=${
+      process.env.API_GEOLOCATION
+    }&ipAddress=${ctx.query.tracker || "0.0.0.0"}`
   ); // your fetch function here
   const resp = await data.json();
   return {
