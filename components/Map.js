@@ -1,72 +1,47 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react'
-import mapboxgl from 'mapbox-gl'
-import ReactMapboxGl, { Layer, Feature, ScaleControl } from 'react-mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { useEffect } from "react";
+import mapboxgl from "mapbox-gl";
+import ReactMapboxGl, { Layer, Feature, ScaleControl } from "react-mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-// function MapGlobal() {
-//   const MapContainer = ReactMapboxGl({
-//     accessToken: process.env.mapbox_key,
-//   });
-//   return (
+mapboxgl.accessToken = process.env.mapbox_key;
 
-//     <div id='map' className='flex-1'>
-//       <MapContainer
-//         style='mapbox://styles/mapbox/satellite-streets-v11'
-//         containerStyle={{
-//           height: '100vh',
-//           width: '100vw   ',
-//         }}
-//       >
-//         <Layer   type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-//           <Feature   coordinates={[18.735693, -70.162651]} />
-
-//         </Layer>
-
-//       </MapContainer>
-//     </div >
-
-//   )
-// }
-
-// export default MapGlobal
-
-
-
-mapboxgl.accessToken = process.env.mapbox_key
-
-function Map() {
-
-
+function Map({ pickupCoordinates }) {
+  const defaultCoordinate = [100.501007, -69.860475];
 
   useEffect(() => {
     const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/satellite-streets-v11',
+      container: "map",
+      style:
+        "mapbox://styles/mapbox/satellite-streets-v12" /* "mapbox://styles/mapbox/satellite-streets-v11" */,
+      center: defaultCoordinate,
       zoom: 1,
-      center: [35, 50],
-      projection: 'globe'
+      projection: "globe",
     });
 
-    map.on('load', () => {
+    map.on("load", () => {
       // Set the default atmosphere style
       map.setFog({});
     });
 
-    // if (data.location.lat && data.location.lng) {
-    //   map.fitBounds([
-    //     data.location.lat, data.location.lng
-    //   ], {
-    //     padding: 100
-    //   })
-    // }
 
-  }, [])
+    if (pickupCoordinates) {
+      addToMap(map, pickupCoordinates);
 
+      map.flyTo({
+        center: pickupCoordinates,
+        essential: true,
+      });
+    }
+  }, [pickupCoordinates]);
 
-  return (
-    <div id='map' className='flex-1'></div >
-  )
+  const addToMap = (map, coordinate) => {
+    const marker1 = new mapboxgl.Marker({ rotation: 3 })
+      .setLngLat(coordinate)
+      .addTo(map);
+  };
+
+  return <div id="map" className="flex-1"></div>;
 }
 
-export default Map
+export default Map;

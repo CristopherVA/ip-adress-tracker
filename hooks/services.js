@@ -1,11 +1,10 @@
 import axios from 'axios'
 
-const fetchData = (url) => {
-   const resp = axios.get(url)
-      .then(res => res.data)
-      .catch(err => console.log(err))
-
-   return resp
-   }
+const fetchData = async (url) => {
+   const resp = await fetch(url)
+   const data =  resp.json()
+   console.log(data)
+   return data
+}  
 
 export default fetchData;
